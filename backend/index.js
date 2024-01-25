@@ -5,6 +5,7 @@ const mongoDBUrl = require('./connections/db');
 const booksRoute = require('./routes/booksRoute') 
 const mongoose = require('mongoose')
 const cors = require('cors')
+const userRoute = require('./routes/userRoute') 
 
 //middleware for parsing request body
 app.use(express.json())
@@ -26,6 +27,7 @@ app.get('/',(req,res)=>{
 
 app.use('/books',booksRoute)
 
+app.use('/users',userRoute)
 //connect database
 mongoose.connect(mongoDBUrl)
 .then(()=>{
