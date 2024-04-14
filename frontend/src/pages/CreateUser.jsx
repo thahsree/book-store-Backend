@@ -27,7 +27,7 @@ function CreateUser(props) {
 
         if (password === confirmPassword) {
             axios
-                .post(`http://localhost:5555/users`, data)
+                .post(`https://book-store-mern-server-two.vercel.app/users`, data)
                 .then((res) => {
                     const response = res.data.message
                     if (response) {
@@ -40,7 +40,7 @@ function CreateUser(props) {
                             password: password
                         }
                         axios
-                            .post(`http://localhost:5555/users/login`, loginData)
+                            .post(`https://book-store-mern-server-two.vercel.app/users/login`, loginData)
                             .then((res) => {
                                 const response = res.data
                                 if (response.status === "error") {

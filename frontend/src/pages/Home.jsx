@@ -15,7 +15,7 @@ function Home(props) {
     useEffect(() => {
         setLoading(true);
         axios
-            .get('http://localhost:5555/books')
+            .get('https://book-store-mern-server-two.vercel.app/books')
             .then((res) => {
                 setBooks(res.data.data);
                 setLoading(false);

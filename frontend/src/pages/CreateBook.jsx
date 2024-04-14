@@ -20,7 +20,7 @@ function CreateBook(props) {
         };
         setLoading(true)
         axios
-            .post(`http://localhost:5555/books`,data)
+            .post(`https://book-store-mern-server-two.vercel.app/books`,data)
             .then(()=>{
                 setLoading(false);
                 navigate('/')

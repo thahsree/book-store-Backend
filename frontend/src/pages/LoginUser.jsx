@@ -17,7 +17,7 @@ function LoginUser(props) {
             password : password
         }
         axios
-            .post(`http://localhost:5555/users/login`,data)
+            .post(`https://book-store-mern-server-two.vercel.app/users/login`,data)
             .then((res)=>{
                 const response = res.data
                 if(response.status==="error"){
