@@ -25,6 +25,7 @@ function Home(props) {
             })
     }, [])
 
+    const isUser = localStorage.getItem("authToken")
     return (
         <div className='p-4'>
             <div className='flex justify-between items-center gap-x-4' >
@@ -46,9 +47,11 @@ function Home(props) {
             </div>
             <div className='flex justify-between items-center'>
                 <h1 className='text-3xl my-8'>Books List</h1>
-                <Link to='/books/create'>
+                {
+                    isUser && <Link to='/books/create'>
                     <MdOutlineAddBox className='text-sky-800 text-4xl' />
                 </Link>
+                }
             </div>
             {loading ?  <Spinner />  : showType === 'table' ? <BooksTable books={books} /> : <BooksCard books={books}/>}
         </div>

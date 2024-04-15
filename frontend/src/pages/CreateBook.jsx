@@ -32,9 +32,7 @@ function CreateBook(props) {
                 console.log(err);
             })
     }
-    const isUser = localStorage.getItem('authToken');
     return (
-        isUser ? 
         <div className='p-4'>
             <BackButton />
             <h1 className='text-3xl my-4'>Create Book</h1>
@@ -73,8 +71,6 @@ function CreateBook(props) {
                 </button>
             </div>
         </div>
-        :
-        navigate('/')
     );
 }
 
