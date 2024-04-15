@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { enqueueSnackbar } from 'notistack';
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import BackButton from '../Components/BackButton';
@@ -10,6 +11,13 @@ function DeleteBook(props) {
     const { id } = useParams()
 
     const handleDeleteBook = ()=>{
+
+        const isUser = localStorage.getItem('authToken')
+        if (!isUser) {
+            navigate('/');
+            enqueueSnackbar("Please Log in first", { variant: "error" });
+            return; // Exit early after navigation
+        }
         setLoading(true);
         axios
             .delete(`https://book-store-mern-server-two.vercel.app/books/${id}`)
