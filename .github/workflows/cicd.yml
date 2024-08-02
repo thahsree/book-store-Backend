@@ -29,6 +29,7 @@ jobs:
     steps:
       - name: Pull Image from DockerHub
         run: docker pull thashree11/book-store-backend:latest
-
+      - name: Delete Container
+        run: docker -rm -f backend-container
       - name: Run Docker Container
         run: docker run -d -p 5555:5555 --name backend-container thashree11/book-store-backend
