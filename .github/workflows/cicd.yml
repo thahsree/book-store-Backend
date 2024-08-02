@@ -1,6 +1,6 @@
-name : DEPLOY BACKEND
+name: DEPLOY BACKEND
 
-on : 
+on: 
   push:
     branches:
       - main
@@ -8,9 +8,26 @@ on :
 jobs:
 
   build:
-   runs-on: ubuntu-latest
-   steps:
-    -name: Checkout Source
-    uses: actions/checkout@v4
-    -name: Login to Dockerhub
-    run:  docker login -u ${{ secrets.DOCKER_USER_NAME}} -p ${{ secrets.DOCKER_PASSWORD}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Login to Dockerhub
+        run: docker login -u ${{ secrets.DOCKER_USER_NAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Docker Image
+        run: docker build -t thashree11/book-store-backend .
+
+      - name: Publish Image to DockerHub
+        run: docker push thashree11/book-store-backend:latest
+  
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Pull Image from DockerHub
+        run: docker pull thashree11/book-store-backend:latest
+
+      - name: Run Docker Container
+        run: docker run -d -p 5555:5555 --name backend-container thashree11/book-store-backend
