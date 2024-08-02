@@ -6,7 +6,7 @@ const booksRoute = require('./routes/booksRoute')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const userRoute = require('./routes/userRoute') 
-
+const dotenv = require('dotenv')
 //middleware for parsing request body
 app.use(express.json())
 
@@ -26,6 +26,7 @@ app.use(cors(
 //     methods:['POST','GET','DELETE','PUT'],
 //     allowedHeaders:['Content-Type']
 // }))
+dotenv.config()
 
 app.get('/',(req,res)=>{
     res.send("Hello World")
