@@ -13,10 +13,11 @@ app.use(express.json())
 //********************** middleware for handling CORS policy **************************
 //allows every origins
 app.use(cors(
-    {
-        origin:["http://3.93.65.15:5555"],
-        credentials:true
-    }
+    // {
+    //     origin:["https://"],
+    //     methods:["GET","POST"],
+    //     credentials:true
+    // }
 ))
 
 //Allows custom origins
