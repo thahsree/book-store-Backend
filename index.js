@@ -42,7 +42,7 @@ mongoose.connect(mongoDBUrl)
     app.listen(PORT,()=>{
         console.log("Connected to PORT:5555");
     })
-})
+}) 
 .catch((err)=>{
     console.log(err);
 })
