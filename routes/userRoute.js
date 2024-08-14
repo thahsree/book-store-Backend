@@ -31,7 +31,6 @@ router.post('/',async (req,res)=>{
         }
     
         const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
         
         const emailClone = await user.find({email:newUser.email})
 
@@ -48,10 +47,6 @@ router.post('/',async (req,res)=>{
         }else if(!emailRegex.test(newUser.email)){
             return res.send({
                 message:"please enter a valid email"
-            })
-        }else if(!passwordRegex.test(newUser.password)){
-            return res.send({
-                message:"password must contain atleast 1 letter, 1 number and minimum 8 charecters "
             })
         }
 
