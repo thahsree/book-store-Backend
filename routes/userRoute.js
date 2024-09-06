@@ -29,7 +29,7 @@ router.post('/',async (req,res)=>{
             password : req.body.password,
             phone : req.body.phone
         }
-    
+      
         const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
         
         const emailClone = await user.find({email:newUser.email})
